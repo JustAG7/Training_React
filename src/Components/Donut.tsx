@@ -50,12 +50,8 @@ const DemoPie = () => {
 
         },
       content: {
-        style: {
-          whiteSpace: 'pre-wrap',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-        },
-        content: 'Minato Chart',
+        
+        content: '',
       },
     },
   };

@@ -1,69 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { Column } from '@ant-design/plots';
+import { Column, G2 } from '@ant-design/plots';
 
 const DemoColumn = () => {
-  const data = [
-    {
-      type: '2000',
-      sales: 38,
-    },
-    {
-      type: '2001',
-      sales: 52,
-    },
-    {
-      type: '2002',
-      sales: 61,
-    },
-    {
-      type: '2003',
-      sales: 145,
-    },
-    {
-      type: ' 2004',
-      sales: 48,
-    },
-    {
-      type: '2005',
-      sales: 38,
-    },
-    {
-      type: '2006',
-      sales: 38,
-    },
-    {
-      type: '2007',
-      sales: 38,
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    asyncFetch();
+  }, []);
+
+  const asyncFetch = () => {
+    fetch('https://gw.alipayobjects.com/os/antfincdn/jSRiL%26YNql/percent-column.json')
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => {
+        console.log('fetch data failed', error);
+      });
+  };
+  G2.registerInteraction('element-link', {
+    start: [
+      {
+        trigger: 'interval:mouseenter',
+        action: 'element-link-by-color:link',
+      },
+    ],
+    end: [
+      {
+        trigger: 'interval:mouseleave',
+        action: 'element-link-by-color:unlink',
+      },
+    ],
+  });
   const config = {
     data,
-    xField: 'type',
-    yField: 'sales',
-    color: 'green',
-    label: {
-
-      style: {
-        fill: '#FFFFFF',
-        opacity: 0.6,
-      },
-    },
-    xAxis: {
+    xField: 'year',
+    yField: 'value',
+    seriesField: 'type',
+    isPercent: true,
+    isStack: true,
+    yAxis: {
       label: {
-        autoHide: true,
-        autoRotate: false,
+        formatter: (val) => `${(val * 100).toFixed(2)}%`,
       },
     },
     meta: {
-      type: {
-        alias: '2001',
-      },
-      sales: {
-        alias: '2002',
+      value: {
+        min: 0,
+        max: 1,
       },
     },
+    label: {
+      position: 'middle' as const,
+      content: (item) => {
+        return `${(item.value * 100).toFixed(2)}%`;
+      },
+      style: {
+        fill: '#fff',
+      },
+    },
+    tooltip: false as const,
+    interactions: [
+      {
+        type: 'element-highlight-by-color',
+      },
+      {
+        type: 'element-link',
+      },
+    ],
   };
+
   return <Column {...config} />;
 };
 

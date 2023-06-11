@@ -1,47 +1,54 @@
-import React from 'react';
-import {  Pie } from '@ant-design/charts';
-import Column from './Column'
-import Donut from './Donut'
-import BasicColumn from './BasicColumn'
-import DemoScatter from './Scatter';
-const data = [
-  { year: '1991', value: 3 },
-  { year: '1992', value: 4 },
-  { year: '1993', value: 3.5 }
-];
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import { Pie } from '@ant-design/plots';
 
-const SimplePieChart = () => {
+const DemoPie = () => {
+  const data = [
+    {
+      type: 'him',
+      value: 27,
+    },
+    {
+      type: 'me',
+      value: 25,
+    },
+    {
+      type: 'you',
+      value: 18,
+    },
+    {
+      type: 'there',
+      value: 15,
+    },
+    {
+      type: 'she',
+      value: 10,
+    },
+    {
+      type: 'her',
+      value: 5,
+    },
+  ];
   const config = {
-    data: data,
+    appendPadding: 10,
+    data,
     angleField: 'value',
-    colorField: 'year',
+    colorField: 'type',
     radius: 0.8,
     label: {
       type: 'outer',
-      content: '{value} \n{percentage}',
+      content: '{percentage}',
     },
-  
+    interactions: [
+      {
+        type: 'pie-legend-active',
+      },
+      {
+        type: 'element-active',
+      },
+    ],
   };
-
-  return (
-      <>
-        <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:py-16 lg:px-8 lg:py-20">
-          <Pie {...config} />
-        </div>
-        <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:py-16 lg:px-8 lg:py-20">
-         <Column />
-        </div>
-        <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:py-16 lg:px-8 lg:py-20">
-         <Donut />
-        </div>
-        <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:py-16 lg:px-8 lg:py-20">
-         <BasicColumn />
-        </div>
-        <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:py-16 lg:px-8 lg:py-20">
-         <DemoScatter />
-        </div>
-      </>
-  );
+  return <Pie {...config} />;
 };
 
-export default SimplePieChart;
+export default DemoPie;

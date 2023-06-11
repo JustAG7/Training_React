@@ -86,21 +86,22 @@ const DemoDualAxes = () => {
         geometry: 'column',
         isStack: true,
         seriesField: 'type',
+          
+        },
+        {
+          geometry: 'line',
+          
+        },
+      ],
+      yAxis: {
+        value: {
+          nice: true, 
+        },
+        count: {
+          nice: true, 
+          min: 0,
+        },
       },
-      {
-        geometry: 'line',
-        
-      },
-    ],
-    yAxis: {
-      value: {
-        nice: true, 
-      },
-      count: {
-        nice: true, 
-        min: 0,
-      },
-    },
   };
   return <DualAxes {...config} />;
 };

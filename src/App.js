@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import Info from './Components/Info';
-import Pie from './Components/Pie.tsx';
 import MainPage from './Components/MainPage';
+import ChartPage from './Components/ChartPage';
 
 function App() {
   return (
@@ -13,8 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/info' element={<Info />} />
-        <Route path='/chart' element={<Pie />} />
-
+        <Route path='/chart' element={<ChartPage />} />
       </Routes>
       <Footer />
     </>
