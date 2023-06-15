@@ -5,22 +5,7 @@ import Donut from "./Donut";
 import BasicColumn from "./BasicColumn";
 import DemoScatter from "./Scatter";
 
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
 import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import {
@@ -149,7 +134,7 @@ export default function Example() {
       */}
       <div className="min-h-full">
         <main className="py-10">
-          <div className="mx-auto mt-8 grid  grid-cols-1 gap-6 sm:px-10 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
+          <div className="mx-auto mt-8 grid  grid-cols-1 gap-6 sm:px-10 lg:max-w-9xl lg:grid-flow-col-dense lg:grid-cols-3">
             <div className="space-y-6 lg:col-span-2 lg:col-start-1">
               {/* Description list*/}
               <section aria-labelledby="applicant-information-title">
@@ -220,7 +205,7 @@ export default function Example() {
                     id="applicant-information-title"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Expense By Types
+                    Booking By Packages Types
                   </h2>
                 </div>
                 <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
