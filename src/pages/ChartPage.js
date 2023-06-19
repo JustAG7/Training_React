@@ -1,9 +1,9 @@
 import React from "react";
-import Pie from "./Pie";
-import Column from "./Column";
-import Donut from "./Donut";
-import BasicColumn from "./BasicColumn";
-import DemoScatter from "./Scatter";
+import Pie from "../Components/Pie";
+import Column from "../Components/Column";
+import Donut from "../Components/Donut";
+import BasicColumn from "../Components/BasicColumn";
+import DemoScatter from "../Components/Scatter";
 
 
 import { Fragment } from "react";

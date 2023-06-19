@@ -1,10 +1,13 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Footer from './Components/Footer';
-import Header from './Components/Header';
-import Info from './Components/Info';
-import MainPage from './Components/MainPage';
-import ChartPage from './Components/ChartPage';
+import Footer from './pages/Footer';
+import Header from './pages/Header';
+import Info from './pages/Info';
+import MainPage from './pages/MainPage';
+import ChartPage from './pages/ChartPage';
+import Admin from './pages/Admin';
+
+
 
 function App() {
   return (
@@ -14,6 +17,7 @@ function App() {
         <Route path='/' element={<MainPage />} />
         <Route path='/info' element={<Info />} />
         <Route path='/chart' element={<ChartPage />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
       <Footer />
     </>

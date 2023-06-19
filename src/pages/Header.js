@@ -36,7 +36,7 @@ const solutions = [
     href: '#',
     icon: CursorArrowRaysIcon,
   },
-  { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
+  { name: 'Security', description: "Your customers' data will be safe and secure.", href: '/admin', icon: ShieldCheckIcon },
   {
     name: 'Integrations',
     description: "Connect with third-party tools that you're already using.",
@@ -100,12 +100,15 @@ export default function Header() {
   const [link3, setLink3] = useState(
     window.location.pathname.includes("/chart") ? "curr-page" : ""
   );
+  const [link4, setLink4] = useState(
+    window.location.pathname.includes("/admin") ? "curr-page" : ""
+  );
   
   useEffect(() => {
     setLink1("/" === window.location.pathname ? "curr-page" : "");
     setLink2(window.location.pathname.includes("/info") ? "curr-page" : "");
     setLink3(window.location.pathname.includes("/chart") ? "curr-page" : "");
-    
+    setLink4(window.location.pathname.includes("/admin") ? "curr-page" : "");
     window.scrollTo(0,0);
   }, [CurrLink]);
   return (
@@ -114,11 +117,11 @@ export default function Header() {
       <div className="relative z-20">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8">
           <div>
-            <Link to="/" className="flex" className={link1}>
+            <Link to="/" className="flex mr-10" className={link1}>
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto sm:h-10"
-                src="https://vanphongxanh.vn/wp-content/uploads/2022/03/logo-social.png"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                 alt=""
               />
             </Link>
@@ -130,7 +133,7 @@ export default function Header() {
             </Popover.Button>
           </div>
           <div className="hidden md:flex md:flex-1 md:items-center md:justify-between">
-            <Popover.Group as="nav" className="flex space-x-10">
+            <Popover.Group as="nav" className="flex space-x-10 ml-20">
               <Popover>
                 {({ open }) => (
                   <>
@@ -357,7 +360,7 @@ export default function Header() {
                     {solutions.map((item) => (
                       <a
                         key={item.name}
-                        href={item.href}
+                        Link to={item.href}
                         className="-m-3 flex items-center rounded-lg p-3 hover:bg-gray-50"
                       >
                         <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
